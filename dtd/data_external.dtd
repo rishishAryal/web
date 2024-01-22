@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library>
+    <book ISBN="123">
+        <title>Introduction to XML</title>
+        <author>John Doe</author>
+        <price>29.99</price>
+    </book>
+    <!-- Add more books if needed -->
+</library>

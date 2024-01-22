@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div>
+    <h2>Comments</h2>
+    <form id="comment-form">
+        <label for="comment">Add a comment:</label>
+        <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+        <br>
+        <button type="button" onclick="submitComment()">Submit Comment</button>
+    </form>
+</div>
+
+<div>
+    <h1>All comments</h1>
+    <ul id="comments-container">
+        <!-- Comments will be displayed here -->
+    </ul>
+</div>
+
+<script>
+    function submitComment() {
+        var commentText = $('#comment').val();
+
+        // Check if the comment is not empty
+        if (commentText.trim() !== "") {
+            $.ajax({
+                type: 'POST',
+                url: 'submit_comment.php',
+                data: { comment: commentText },
+                success: function(response) {
+                    // Append the new comment to the comments container as an <li> item
+                    $('#comments-container').append('<li>' + response + '</li>');
+
+                    // Clear the comment input
+                    $('#comment').val('');
+                }
+            });
+        }
+    }
+
+    // Load existing comments on page load
+    $(document).ready(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'get_comments.php',
+            success: function(response) {
+                // Display existing comments as <li> items
+                $('#comments-container').html('<li>' + response.split('</p>').join('</p></li>') + '</li>');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

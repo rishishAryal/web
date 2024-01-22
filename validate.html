@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="registrationForm" enctype="multipart/form-data">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="text" id="mobileNumber" name="mobileNumber" pattern="[0-9]+" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="photo">Photo (max 1MB):</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function validateForm() {
+            var firstName = $('#firstName').val();
+            var lastName = $('#lastName').val();
+            var mobileNumber = $('#mobileNumber').val();
+            var gender = $('#gender').val();
+            var dob = $('#dob').val();
+            var country = $('#country').val();
+            var email = $('#email').val();
+            var photo = $('#photo')[0].files[0];
+
+            // Check for empty fields
+            if (!firstName || !lastName || !mobileNumber || !gender || !dob || !country || !email || !photo) {
+                $('#errorMessage').text('All fields must be filled.');
+                return;
+            }
+
+            // Validate mobile number
+            if (!/^\d+$/.test(mobileNumber)) {
+                $('#errorMessage').text('Mobile number must be numeric.');
+                return;
+            }
+
+            // Validate file size
+            if (photo.size > 1024 * 1024) {
+                $('#errorMessage').text('Photo size must be less than 1MB.');
+                return;
+            }
+
+            // If all validations pass, submit the form
+            $('#errorMessage').text('');
+            var form = $('#registrationForm')[0];
+            var formData = new FormData(form);
+
+            
+        }
+    </script>
+</body>
+</html>

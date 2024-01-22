@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE library [
+    <!ELEMENT library (book+)>
+    <!ELEMENT book (title, author, price)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ATTLIST book ISBN CDATA #REQUIRED>
+]>
+<library>
+    <book ISBN="123">
+        <title>Introduction to XML</title>
+        <author>John Doe</author>
+        <price>29.99</price>
+    </book>
+    <!-- Add more books if needed -->
+</library>

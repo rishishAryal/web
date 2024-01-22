@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<library xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="data.xsd">
+    <book ISBN="123">
+        <title>Introduction to XML</title>
+        <author>John Doe</author>
+        <price>29.99</price>
+    </book>
+    <!-- Add more books if needed -->
+</library>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+       
+
+        .container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .box {
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .relative-box {
+            position: relative;
+            background-color: #ffcccb;
+        }
+
+        .absolute-box {
+            position: absolute;
+            top: 150px;
+            left: 50px;
+            background-color: #a0e57e;
+        }
+
+        .fixed-box {
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            background-color: #add8e6;
+        }
+
+    
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="container">
+        <div class="box relative-box">
+            <h2>Relative Box</h2>
+            <p>This box is positioned relative to its normal position in the document flow.</p>
+        </div>
+
+        <div class="box absolute-box">
+            <h2>Absolute Box</h2>
+            <p>This box is positioned absolutely, relative to its nearest positioned ancestor.</p>
+        </div>
+
+        <div class="box fixed-box">
+            <h2>Fixed Box</h2>
+            <p>This box is positioned fixed, relative to the viewport. It stays in the same place even when scrolling.</p>
+        </div>
+    </div>
+
+   
+
+</body>
+</html>
